@@ -1,0 +1,1 @@
+Enable-Migrations -ProjectName Bastis.Data -StartUpProjectName Bastis.Web -ContextProjectName Bastis.Data -verbose
