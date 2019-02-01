@@ -1,1 +1,18 @@
 Enable-Migrations -ProjectName Bastis.Data -StartUpProjectName Bastis.Web -ContextProjectName Bastis.Data -verbose
+
+
+
+enable-migrations -ContextProjectName Bastis.Data.Context -contexttypename Bastis.Data.Context.IdentityModels -Verbose
+
+
+
+enable-migrations -verbose -startupprojectname Bastis.Data.Context.IdentityModels.cs
+
+Enable-Migrations -ProjectName Bastis.Data -StartUpProjectName Bastis.Web -ContextProjectName Bastis.Data -verbose
+
+
+add-migration InitialMigration -ProjectName Bastis.Data
+update-database -verbose -startupprojectname Bastis.Data
+
+
+http://www.entityframeworktutorial.net/code-first/code-based-migration-in-code-first.aspx
