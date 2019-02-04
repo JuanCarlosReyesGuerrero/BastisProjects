@@ -62,6 +62,10 @@
       <Project>{53BEA302-8827-4854-A3A9-F05E0E7B5C94}</Project>
       <Name>Bastis.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bastis.Repository\Bastis.Repository.csproj">
+      <Project>{3B3C12A6-5196-4898-9C17-A839E7915527}</Project>
+      <Name>Bastis.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

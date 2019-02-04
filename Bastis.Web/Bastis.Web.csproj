@@ -171,12 +171,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Entities\Agency.cs" />
+    <Compile Include="Models\Entities\Agent.cs" />
+    <Compile Include="Models\Entities\City.cs" />
+    <Compile Include="Models\Entities\Property.cs" />
+    <Compile Include="Models\Entities\State.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,6 +200,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -240,6 +248,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\States\Create.cshtml" />
+    <Content Include="Views\States\Delete.cshtml" />
+    <Content Include="Views\States\Details.cshtml" />
+    <Content Include="Views\States\Edit.cshtml" />
+    <Content Include="Views\States\Index.cshtml" />
+    <Content Include="Views\Cities\Create.cshtml" />
+    <Content Include="Views\Cities\Delete.cshtml" />
+    <Content Include="Views\Cities\Details.cshtml" />
+    <Content Include="Views\Cities\Edit.cshtml" />
+    <Content Include="Views\Cities\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -261,6 +279,14 @@
     <ProjectReference Include="..\Bastis.Data\Bastis.Data.csproj">
       <Project>{53BEA302-8827-4854-A3A9-F05E0E7B5C94}</Project>
       <Name>Bastis.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bastis.Repository\Bastis.Repository.csproj">
+      <Project>{3B3C12A6-5196-4898-9C17-A839E7915527}</Project>
+      <Name>Bastis.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bastis.Service\Bastis.Service.csproj">
+      <Project>{A7BA47C0-E8C0-4AEB-81E7-B07B138F68E6}</Project>
+      <Name>Bastis.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -12,7 +12,65 @@ Enable-Migrations -ProjectName Bastis.Data -StartUpProjectName Bastis.Web -Conte
 
 
 add-migration InitialMigration -ProjectName Bastis.Data
-update-database -verbose -startupprojectname Bastis.Data
+update-database -verbose -ProjectName Bastis.Data
+
+//update-database -verbose -startupprojectname Bastis.Data
 
 
 http://www.entityframeworktutorial.net/code-first/code-based-migration-in-code-first.aspx
+
+
+
+
+
+http://preview.themeforest.net/item/lalan-real-estate-property-listing-html-template/full_screen_preview/21845605?ref=freshdesignweb&clickthrough_id=1399522620&redirect_back=true
+Agency
+Agent
+Property
+Municipality
+Department
+
+Agencies
+Agents
+Properties
+Municipalities
+Departments
+
+
+
+
+
+-----------------------------------------------------------
+
+
+ARQUITECTURA DDD PARA PROGRAMACION
+
+https://es.stackoverflow.com/questions/41889/asp-net-mvc-arquitectura-ddddomain-driven-design
+
+
+https://prezi.com/g_k6fdrg_rmd/arquitectura-ddd-net/
+
+
+
+https://github.com/jatubio/5minutos_laravel/wiki/Resumen-sobre-DDD.-Domain-Driven-Design
+
+https://devexperto.com/domain-driven-design-1/
+https://devexperto.com/domain-driven-design-2/
+https://devexperto.com/arquitectura-del-software/
+
+
+MEJOR TEXTO Y TUTORIAL
+https://yarrblogcr.wordpress.com/2017/07/16/crud-con-arquitectura-ddd-en-c-1/
+
+
+
+
+
+https://www.paradigmadigital.com/dev/ddd-dominio-implica-crecer-fuerte/
+
+
+
+
+
+https://www.pluralsight.com/guides/asp-net-mvc-creating-solutions-with-separate-projects-for-entities-data-access-and-website-functionality
+https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -59,9 +60,25 @@ namespace Bastis.Data.Entities
         //[MaxLength(128)]
         public string ProfilePicture { get; set; }
 
-        public Guid UserRegisters { get; set; }
-        public DateTime DateRegister { get; set; }
-        public Guid UserModifies { get; set; }
-        public DateTime DateModified { get; set; }
+        public int AgencyID { get; set; }
+
+        // Inicio Auditoria de la tabla ---------------------------------------------------
+        public Guid? UserRegisters { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? DateRegister { get; set; }
+
+        public Guid? UserModifies { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? DateModified { get; set; }
+        // Fin Auditoria de la tabla ---------------------------------------------------
+
+
+        public virtual Agency Agency { get; set; }
+
+        public virtual ICollection<Property> Properties { get; set; }
     }
 }

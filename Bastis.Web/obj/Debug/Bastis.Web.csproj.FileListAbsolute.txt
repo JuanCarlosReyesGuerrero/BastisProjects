@@ -132,3 +132,9 @@ E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.Facebook.resources
 E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.Google.resources.dll
 E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
+E:\Developer\Bastis\Bastis.Web\bin\Bastis.Repository.dll
+E:\Developer\Bastis\Bastis.Web\bin\Bastis.Service.dll
+E:\Developer\Bastis\Bastis.Web\bin\Bastis.Repository.pdb
+E:\Developer\Bastis\Bastis.Web\bin\Bastis.Repository.dll.config
+E:\Developer\Bastis\Bastis.Web\bin\Bastis.Service.pdb
+E:\Developer\Bastis\Bastis.Web\bin\Bastis.Service.dll.config

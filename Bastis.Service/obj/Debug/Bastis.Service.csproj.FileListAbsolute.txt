@@ -19,3 +19,8 @@ E:\Developer\Bastis\Bastis.Service\bin\Debug\es\Microsoft.AspNet.Identity.Entity
 E:\Developer\Bastis\Bastis.Service\obj\Debug\Bastis.Service.csproj.CopyComplete
 E:\Developer\Bastis\Bastis.Service\obj\Debug\Bastis.Service.dll
 E:\Developer\Bastis\Bastis.Service\obj\Debug\Bastis.Service.pdb
+E:\Developer\Bastis\Bastis.Service\bin\Debug\es\EntityFramework.resources.dll
+E:\Developer\Bastis\Bastis.Service\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+E:\Developer\Bastis\Bastis.Service\bin\Debug\Bastis.Repository.dll
+E:\Developer\Bastis\Bastis.Service\bin\Debug\Bastis.Repository.pdb
+E:\Developer\Bastis\Bastis.Service\bin\Debug\Bastis.Repository.dll.config

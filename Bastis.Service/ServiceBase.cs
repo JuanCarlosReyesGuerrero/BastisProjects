@@ -1,25 +1,40 @@
 ﻿using Bastis.Data.Context;
+using Bastis.Data.Entities;
+using Bastis.Repository;
 using System;
 
 namespace Bastis.Service
 {
     public class ServiceBase : IDisposable
     {
-        private ApplicationDbContext context = new ApplicationDbContext();
+        private ApplicationDbContext context = new ApplicationDbContext();       
 
-        //private GenericRepository<AporteParafiscales> aporteParafiscalesRepository;
+        private GenericRepository<State> stateRepository;
+        private GenericRepository<City> cityRepository;
 
-        //public GenericRepository<Zonas> ZonasRepository
-        //{
-        //    get
-        //    {
-        //        if (this.zonasRepository == null)
-        //        {
-        //            this.zonasRepository = new GenericRepository<Zonas>(context);
-        //        }
-        //        return zonasRepository;
-        //    }
-        //}
+        public GenericRepository<State> StateRepository
+        {
+            get
+            {
+                if (this.stateRepository == null)
+                {
+                    this.stateRepository = new GenericRepository<State>(context);
+                }
+                return stateRepository;
+            }
+        }
+
+        public GenericRepository<City> CityRepository
+        {
+            get
+            {
+                if (this.cityRepository == null)
+                {
+                    this.cityRepository = new GenericRepository<City>(context);
+                }
+                return cityRepository;
+            }
+        }
 
 
 

@@ -55,15 +55,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\IdentityModels.cs" />
+    <Compile Include="Entities\Agency.cs" />
     <Compile Include="Entities\Agent.cs" />
+    <Compile Include="Entities\City.cs" />
     <Compile Include="Entities\Customer.cs" />
-    <Compile Include="Migrations\201902012106170_InitialMigration.cs" />
-    <Compile Include="Migrations\201902012106170_InitialMigration.Designer.cs">
-      <DependentUpon>201902012106170_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902012252264_modelMigration.cs" />
-    <Compile Include="Migrations\201902012252264_modelMigration.Designer.cs">
-      <DependentUpon>201902012252264_modelMigration.cs</DependentUpon>
+    <Compile Include="Entities\Property.cs" />
+    <Compile Include="Entities\State.cs" />
+    <Compile Include="Migrations\201902042019182_InitialMigration.cs" />
+    <Compile Include="Migrations\201902042019182_InitialMigration.Designer.cs">
+      <DependentUpon>201902042019182_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,11 +73,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902012106170_InitialMigration.resx">
-      <DependentUpon>201902012106170_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902012252264_modelMigration.resx">
-      <DependentUpon>201902012252264_modelMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902042019182_InitialMigration.resx">
+      <DependentUpon>201902042019182_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

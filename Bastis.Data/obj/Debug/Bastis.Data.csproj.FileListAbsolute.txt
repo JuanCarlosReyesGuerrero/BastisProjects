@@ -20,4 +20,3 @@ E:\Developer\Bastis\Bastis.Data\bin\Debug\es\EntityFramework.resources.dll
 E:\Developer\Bastis\Bastis.Data\bin\Debug\es\EntityFramework.SqlServer.resources.dll
 E:\Developer\Bastis\Bastis.Data\obj\Debug\Bastis.Data.Migrations.InitialMigration.resources
 E:\Developer\Bastis\Bastis.Data\obj\Debug\Bastis.Data.csproj.GenerateResource.cache
-E:\Developer\Bastis\Bastis.Data\obj\Debug\Bastis.Data.Migrations.modelMigration.resources

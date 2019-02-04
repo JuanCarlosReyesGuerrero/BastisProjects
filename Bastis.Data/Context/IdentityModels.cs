@@ -28,9 +28,12 @@ namespace Bastis.Data.Context
 
 
         public DbSet<Customer> Customers { get; set; }
+
         public DbSet<Agent> Agents { get; set; }
-
-
+        public DbSet<Agency> Agencies { get; set; }
+        public DbSet<Property> Properties { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<State> States { get; set; }
 
         public static ApplicationDbContext Create()
         {
