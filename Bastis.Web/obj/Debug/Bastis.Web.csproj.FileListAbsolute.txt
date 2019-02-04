@@ -113,9 +113,6 @@ E:\Developer\Bastis\Bastis.Web\obj\Debug\Bastis.Web.csproj.CoreCompileInputs.cac
 E:\Developer\Bastis\Bastis.Web\obj\Debug\Bastis.Web.csproj.CopyComplete
 E:\Developer\Bastis\Bastis.Web\obj\Debug\Bastis.dll
 E:\Developer\Bastis\Bastis.Web\obj\Debug\Bastis.pdb
-E:\Developer\Bastis\Bastis.Web\bin\Bastis.Data.dll
-E:\Developer\Bastis\Bastis.Web\bin\Bastis.Data.pdb
-E:\Developer\Bastis\Bastis.Web\bin\Bastis.Data.dll.config
 E:\Developer\Bastis\Bastis.Web\bin\roslyn\Microsoft.Win32.Primitives.dll
 E:\Developer\Bastis\Bastis.Web\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
 E:\Developer\Bastis\Bastis.Web\bin\roslyn\System.Globalization.Calendars.dll
@@ -132,9 +129,5 @@ E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.Facebook.resources
 E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.Google.resources.dll
 E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
-E:\Developer\Bastis\Bastis.Web\bin\Bastis.Repository.dll
-E:\Developer\Bastis\Bastis.Web\bin\Bastis.Service.dll
-E:\Developer\Bastis\Bastis.Web\bin\Bastis.Repository.pdb
-E:\Developer\Bastis\Bastis.Web\bin\Bastis.Repository.dll.config
-E:\Developer\Bastis\Bastis.Web\bin\Bastis.Service.pdb
-E:\Developer\Bastis\Bastis.Web\bin\Bastis.Service.dll.config
+E:\Developer\Bastis\Bastis.Web\obj\Debug\Bastis.Migrations.migracionInicial.resources
+E:\Developer\Bastis\Bastis.Web\obj\Debug\Bastis.Web.csproj.GenerateResource.cache

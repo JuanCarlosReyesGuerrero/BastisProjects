@@ -1,8 +1,9 @@
-﻿using System.Data.Entity;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using Bastis.Models.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Bastis.Models
 {
@@ -25,8 +26,6 @@ namespace Bastis.Models
         {
         }
 
-
-        public DbSet<Customer> Customers { get; set; }
 
         public DbSet<Agent> Agents { get; set; }
         public DbSet<Agency> Agencies { get; set; }

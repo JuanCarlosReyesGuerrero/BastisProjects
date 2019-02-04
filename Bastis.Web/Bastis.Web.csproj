@@ -178,6 +178,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902042220514_migracionInicial.cs" />
+    <Compile Include="Migrations\201902042220514_migracionInicial.Designer.cs">
+      <DependentUpon>201902042220514_migracionInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Agency.cs" />
     <Compile Include="Models\Entities\Agent.cs" />
@@ -248,16 +253,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\States\Create.cshtml" />
-    <Content Include="Views\States\Delete.cshtml" />
-    <Content Include="Views\States\Details.cshtml" />
-    <Content Include="Views\States\Edit.cshtml" />
-    <Content Include="Views\States\Index.cshtml" />
     <Content Include="Views\Cities\Create.cshtml" />
     <Content Include="Views\Cities\Delete.cshtml" />
     <Content Include="Views\Cities\Details.cshtml" />
     <Content Include="Views\Cities\Edit.cshtml" />
     <Content Include="Views\Cities\Index.cshtml" />
+    <Content Include="Views\States\Create.cshtml" />
+    <Content Include="Views\States\Delete.cshtml" />
+    <Content Include="Views\States\Details.cshtml" />
+    <Content Include="Views\States\Edit.cshtml" />
+    <Content Include="Views\States\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -276,18 +281,9 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bastis.Data\Bastis.Data.csproj">
-      <Project>{53BEA302-8827-4854-A3A9-F05E0E7B5C94}</Project>
-      <Name>Bastis.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bastis.Repository\Bastis.Repository.csproj">
-      <Project>{3B3C12A6-5196-4898-9C17-A839E7915527}</Project>
-      <Name>Bastis.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Bastis.Service\Bastis.Service.csproj">
-      <Project>{A7BA47C0-E8C0-4AEB-81E7-B07B138F68E6}</Project>
-      <Name>Bastis.Service</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\201902042220514_migracionInicial.resx">
+      <DependentUpon>201902042220514_migracionInicial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

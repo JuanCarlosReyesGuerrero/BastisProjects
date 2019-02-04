@@ -1,21 +1,24 @@
-﻿using Bastis.Data.Entities;
-using Bastis.Service;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
+using Bastis.Models;
+using Bastis.Models.Entities;
 
 namespace Bastis.Controllers
 {
     public class CitiesController : Controller
     {
-        //private ApplicationDbContext db = new ApplicationDbContext();
-        private ServiceBase serviceBase = new ServiceBase();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Cities
         public ActionResult Index()
         {
-            // var cities = db.Cities.Include(c => c.State);
-            var cities = serviceBase.CityRepository.GetAll(includeProperties: "State");
+            var cities = db.Cities.Include(c => c.State);
             return View(cities.ToList());
         }
 
@@ -26,10 +29,7 @@ namespace Bastis.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            //City city = db.Cities.Find(id);
-            City city = serviceBase.CityRepository.GetByID(id);
-
+            City city = db.Cities.Find(id);
             if (city == null)
             {
                 return HttpNotFound();
@@ -40,8 +40,7 @@ namespace Bastis.Controllers
         // GET: Cities/Create
         public ActionResult Create()
         {
-            //ViewBag.StateID = new SelectList(db.States, "ID", "Code");
-            PopulateStatesDropDownList();
+            ViewBag.StateID = new SelectList(db.States, "ID", "Code");
             return View();
         }
 
@@ -52,28 +51,14 @@ namespace Bastis.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Code,Name,UnifiedCode,StateID,StateCode,Status,UserRegisters,DateRegister,UserModifies,DateModified")] City city)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    //db.Cities.Add(city);
-                    //db.SaveChanges();
-
-                    serviceBase.CityRepository.Insert(city);
-                    serviceBase.Save();
-                    return RedirectToAction("Index");
-                }
-            }
-            catch (System.Exception)
-            {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-                // throw;
+                db.Cities.Add(city);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            //ViewBag.StateID = new SelectList(db.States, "ID", "Code", city.StateID);
-            //return View(city);
-
-            PopulateStatesDropDownList(city.StateID);
+            ViewBag.StateID = new SelectList(db.States, "ID", "Code", city.StateID);
             return View(city);
         }
 
@@ -84,16 +69,12 @@ namespace Bastis.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            //City city = db.Cities.Find(id);
-            City city = serviceBase.CityRepository.GetByID(id);
-
+            City city = db.Cities.Find(id);
             if (city == null)
             {
                 return HttpNotFound();
             }
-            //ViewBag.StateID = new SelectList(db.States, "ID", "Code", city.StateID);
-            PopulateStatesDropDownList(city.StateID);
+            ViewBag.StateID = new SelectList(db.States, "ID", "Code", city.StateID);
             return View(city);
         }
 
@@ -104,25 +85,13 @@ namespace Bastis.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Code,Name,UnifiedCode,StateID,StateCode,Status,UserRegisters,DateRegister,UserModifies,DateModified")] City city)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    //db.Entry(city).State = EntityState.Modified;
-                    //db.SaveChanges();
-                    serviceBase.CityRepository.Update(city);
-                    serviceBase.Save();
-                    return RedirectToAction("Index");
-                }
+                db.Entry(city).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch (System.Exception)
-            {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-                //throw;
-            }
-
-            PopulateStatesDropDownList(city.StateID);
-            //ViewBag.StateID = new SelectList(db.States, "ID", "Code", city.StateID);
+            ViewBag.StateID = new SelectList(db.States, "ID", "Code", city.StateID);
             return View(city);
         }
 
@@ -133,10 +102,7 @@ namespace Bastis.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            //City city = db.Cities.Find(id);
-            City city = serviceBase.CityRepository.GetByID(id);
-
+            City city = db.Cities.Find(id);
             if (city == null)
             {
                 return HttpNotFound();
@@ -149,12 +115,9 @@ namespace Bastis.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            //City city = db.Cities.Find(id);
-            //db.Cities.Remove(city);
-            //db.SaveChanges();
-            City city = serviceBase.CityRepository.GetByID(id);
-            serviceBase.CityRepository.Delete(id);
-            serviceBase.Save();
+            City city = db.Cities.Find(id);
+            db.Cities.Remove(city);
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -162,17 +125,9 @@ namespace Bastis.Controllers
         {
             if (disposing)
             {
-                //db.Dispose();
-                serviceBase.Dispose();
+                db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        private void PopulateStatesDropDownList(object selectedState = null)
-        {
-            var statesQuery = serviceBase.StateRepository.GetAll(
-                orderBy: q => q.OrderBy(d => d.Name));
-            ViewBag.StateID = new SelectList(statesQuery, "StateID", "Name", selectedState);
         }
     }
 }
