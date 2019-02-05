@@ -1,0 +1,20 @@
+https://docs.microsoft.com/en-us/aspnet/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api
+
+https://docs.microsoft.com/en-us/aspnet/mvc/overview/older-versions/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application
+
+
+https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application
+
+
+https://geeks.ms/jtorrecilla/2012/03/16/dbmigration-y-code-first/
+
+
+
+Update-Database -TargetMigration:0 -force [Esto destruirá todas las tablas y todos los datos.]
+Update-Database -force [utilización fuerza si es necesario]
+
+
+
+
+https://www.youtube.com/watch?v=bpaFpla9pEs
+http://debsv.blogspot.com/2016/03/permisos-por-roles-mvc.html

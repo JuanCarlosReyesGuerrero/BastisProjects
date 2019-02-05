@@ -33,6 +33,7 @@ namespace Bastis.Models.Entities
 
         [Display(Name = "Baños")]
         [Required(ErrorMessage = "Digite el Baños")]
+        [Range(0, 99)]
         public string Bathrooms { get; set; }
 
         [Display(Name = "Pisos")]

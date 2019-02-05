@@ -17,6 +17,11 @@ namespace Bastis.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
+            //  This method will be called after migrating to the latest version.
+
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data.
+
             //if (!(context.Users.Any(u => u.UserName == "user@user.com")))
             //{
             //    var userStore = new UserStore<ApplicationUser>(context);
@@ -34,20 +39,16 @@ namespace Bastis.Migrations
                 manager.Create(role);
             }
 
-            if (!context.Users.Any(u => u.UserName == "founder"))
+            if (!context.Users.Any(u => u.UserName == "user@user.com"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser { UserName = "founder" };
+                var user = new ApplicationUser { UserName = "user@user.com" };
 
-                manager.Create(user, "ChangeItAsap!");
+                manager.Create(user, "Password@123");
                 manager.AddToRole(user.Id, "AppAdmin");
             }
-
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+           
             var states = new List<State>
             {
                 new State{Code="05",Name="ANTIOQUIA",Status=true},

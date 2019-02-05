@@ -7,13 +7,13 @@ namespace Bastis.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class migracionInicial : IMigrationMetadata
+    public sealed partial class Inicial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(migracionInicial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Inicial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902042220514_migracionInicial"; }
+            get { return "201902051309437_Inicial"; }
         }
         
         string IMigrationMetadata.Source

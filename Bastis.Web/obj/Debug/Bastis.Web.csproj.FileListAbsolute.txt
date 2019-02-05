@@ -129,5 +129,5 @@ E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.Facebook.resources
 E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.Google.resources.dll
 E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
-E:\Developer\Bastis\Bastis.Web\obj\Debug\Bastis.Migrations.migracionInicial.resources
+E:\Developer\Bastis\Bastis.Web\obj\Debug\Bastis.Migrations.Inicial.resources
 E:\Developer\Bastis\Bastis.Web\obj\Debug\Bastis.Web.csproj.GenerateResource.cache
