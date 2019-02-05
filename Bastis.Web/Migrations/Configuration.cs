@@ -1,7 +1,10 @@
 using Bastis.Models;
 using Bastis.Models.Entities;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Linq;
 
 namespace Bastis.Migrations
 {
@@ -14,6 +17,33 @@ namespace Bastis.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
+            //if (!(context.Users.Any(u => u.UserName == "user@user.com")))
+            //{
+            //    var userStore = new UserStore<ApplicationUser>(context);
+            //    var userManager = new UserManager<ApplicationUser>(userStore);
+            //    var userToInsert = new ApplicationUser { UserName = "user@user.com" };
+            //    userManager.Create(userToInsert, "Password@123");
+            //}
+
+            if (!context.Roles.Any(r => r.Name == "AppAdmin"))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = "AppAdmin" };
+
+                manager.Create(role);
+            }
+
+            if (!context.Users.Any(u => u.UserName == "founder"))
+            {
+                var store = new UserStore<ApplicationUser>(context);
+                var manager = new UserManager<ApplicationUser>(store);
+                var user = new ApplicationUser { UserName = "founder" };
+
+                manager.Create(user, "ChangeItAsap!");
+                manager.AddToRole(user.Id, "AppAdmin");
+            }
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
