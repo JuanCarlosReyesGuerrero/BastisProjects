@@ -3,7 +3,7 @@ namespace Bastis.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Inicial : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -128,27 +128,19 @@ namespace Bastis.Migrations
                 .Index(t => t.StateID);
             
             CreateTable(
-                "dbo.AspNetRoles",
+                "dbo.CustomPermissions",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(nullable: false, maxLength: 256),
+                        CustomPermissionID = c.Int(nullable: false, identity: true),
+                        UserID = c.Guid(nullable: false),
+                        MenuID = c.Int(nullable: false),
+                        ApplicationUser_Id = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.Id)
-                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
-            
-            CreateTable(
-                "dbo.AspNetUserRoles",
-                c => new
-                    {
-                        UserId = c.String(nullable: false, maxLength: 128),
-                        RoleId = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
+                .PrimaryKey(t => t.CustomPermissionID)
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
+                .ForeignKey("dbo.Menus", t => t.MenuID, cascadeDelete: true)
+                .Index(t => t.MenuID)
+                .Index(t => t.ApplicationUser_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -195,35 +187,99 @@ namespace Bastis.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
+            CreateTable(
+                "dbo.AspNetUserRoles",
+                c => new
+                    {
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        RoleId = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.UserId)
+                .Index(t => t.RoleId);
+            
+            CreateTable(
+                "dbo.Menus",
+                c => new
+                    {
+                        MenuID = c.Int(nullable: false, identity: true),
+                        DisplayName = c.String(nullable: false, maxLength: 50),
+                        ParentMenuID = c.Int(nullable: false),
+                        OrderNumber = c.Int(nullable: false),
+                        MenuURL = c.String(maxLength: 100),
+                        MenuIcon = c.String(maxLength: 25),
+                    })
+                .PrimaryKey(t => t.MenuID);
+            
+            CreateTable(
+                "dbo.Permissions",
+                c => new
+                    {
+                        PermissionID = c.Int(nullable: false, identity: true),
+                        RoleID = c.Guid(nullable: false),
+                        MenuID = c.Int(nullable: false),
+                        ApplicationRole_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.PermissionID)
+                .ForeignKey("dbo.AspNetRoles", t => t.ApplicationRole_Id)
+                .ForeignKey("dbo.Menus", t => t.MenuID, cascadeDelete: true)
+                .Index(t => t.MenuID)
+                .Index(t => t.ApplicationRole_Id);
+            
+            CreateTable(
+                "dbo.AspNetRoles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 256),
+                        Description = c.String(),
+                        Discriminator = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Name, unique: true, name: "RoleNameIndex");
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Permissions", "MenuID", "dbo.Menus");
+            DropForeignKey("dbo.Permissions", "ApplicationRole_Id", "dbo.AspNetRoles");
+            DropForeignKey("dbo.CustomPermissions", "MenuID", "dbo.Menus");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.CustomPermissions", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Properties", "State_ID", "dbo.States");
             DropForeignKey("dbo.Cities", "StateID", "dbo.States");
             DropForeignKey("dbo.Properties", "Agent_CustomerID", "dbo.Agents");
             DropForeignKey("dbo.Properties", "Agency_ID", "dbo.Agencies");
             DropForeignKey("dbo.Agents", "AgencyID", "dbo.Agencies");
+            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Permissions", new[] { "ApplicationRole_Id" });
+            DropIndex("dbo.Permissions", new[] { "MenuID" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.CustomPermissions", new[] { "ApplicationUser_Id" });
+            DropIndex("dbo.CustomPermissions", new[] { "MenuID" });
             DropIndex("dbo.Cities", new[] { "StateID" });
             DropIndex("dbo.Properties", new[] { "State_ID" });
             DropIndex("dbo.Properties", new[] { "Agent_CustomerID" });
             DropIndex("dbo.Properties", new[] { "Agency_ID" });
             DropIndex("dbo.Agents", new[] { "AgencyID" });
+            DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Permissions");
+            DropTable("dbo.Menus");
+            DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");
+            DropTable("dbo.CustomPermissions");
             DropTable("dbo.Cities");
             DropTable("dbo.States");
             DropTable("dbo.Properties");

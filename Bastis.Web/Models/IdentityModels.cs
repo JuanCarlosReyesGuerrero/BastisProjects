@@ -1,6 +1,7 @@
 ﻿using Bastis.Models.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -17,6 +18,18 @@ namespace Bastis.Models
             // Agregar aquí notificaciones personalizadas de usuario
             return userIdentity;
         }
+
+        public virtual ICollection<CustomPermission> CustomPermissions { get; set; }       
+    }
+
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole() : base() { }
+        public ApplicationRole(string name) : base(name) { }
+        public string Description { get; set; }
+
+        public virtual ICollection<Permission> Permissions { get; set; }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -27,11 +40,20 @@ namespace Bastis.Models
         }
 
 
-        public DbSet<Agent> Agents { get; set; }
         public DbSet<Agency> Agencies { get; set; }
-        public DbSet<Property> Properties { get; set; }
+        public DbSet<Agent> Agents { get; set; }
+
+        //public DbSet<AspNetRoles> AspNetRoles { get; set; }
+        //public DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
+        //public DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        //public DbSet<AspNetUsers> AspNetUsers { get; set; }
+
         public DbSet<City> Cities { get; set; }
-        public DbSet<State> States { get; set; }
+        public DbSet<CustomPermission> CustomPermissions { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
+        public DbSet<Property> Properties { get; set; }
+        public DbSet<State> States { get; set; }       
 
         public static ApplicationDbContext Create()
         {
