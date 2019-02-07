@@ -131,3 +131,4 @@ E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.MicrosoftAccount.r
 E:\Developer\Bastis\Bastis.Web\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
 E:\Developer\Bastis\Bastis.Web\obj\Debug\Bastis.Migrations.Initial.resources
 E:\Developer\Bastis\Bastis.Web\obj\Debug\Bastis.Web.csproj.GenerateResource.cache
+E:\Developer\Bastis\Bastis.Web\obj\Debug\Bastis.Migrations.Initial1.resources

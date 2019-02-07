@@ -15,6 +15,12 @@ namespace Bastis.Models.Entities
         [Required(ErrorMessage = "xxxxx")]
         public int MenuID { get; set; }
 
+        public bool ViewMenu { get; set; }
+        public bool CreateOption { get; set; }
+        public bool ReadOption { get; set; }
+        public bool UpdateOption { get; set; }
+        public bool DeleteOption { get; set; }
+
         public virtual Menu Menu { get; set; }
         public virtual ApplicationRole ApplicationRole { get; set; }
         

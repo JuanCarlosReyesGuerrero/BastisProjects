@@ -59,5 +59,7 @@ namespace Bastis.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Bastis.Models.ApplicationRole> IdentityRoles { get; set; }
     }
 }

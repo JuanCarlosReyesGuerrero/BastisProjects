@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Bastis.Models.Entities.Permission>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Menu.DisplayName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ViewMenu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateOption)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReadOption)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdateOption)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeleteOption)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Menu.DisplayName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ViewMenu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateOption)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReadOption)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdateOption)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeleteOption)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PermissionID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PermissionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PermissionID })
+        </td>
+    </tr>
+}
+
+</table>
