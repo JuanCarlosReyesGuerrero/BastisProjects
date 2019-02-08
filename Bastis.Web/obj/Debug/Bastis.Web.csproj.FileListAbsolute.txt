@@ -270,3 +270,7 @@ D:\Developments\BastisProjects\Bastis.Web\bin\PagedList.dll
 D:\Developments\BastisProjects\Bastis.Web\bin\PagedList.Mvc.dll
 D:\Developments\BastisProjects\Bastis.Web\bin\PagedList.xml
 D:\Developments\BastisProjects\Bastis.Web\bin\PagedList.Mvc.xml
+E:\Developer\Bastis\Bastis.Web\bin\PagedList.dll
+E:\Developer\Bastis\Bastis.Web\bin\PagedList.Mvc.dll
+E:\Developer\Bastis\Bastis.Web\bin\PagedList.xml
+E:\Developer\Bastis\Bastis.Web\bin\PagedList.Mvc.xml
