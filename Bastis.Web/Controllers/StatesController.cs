@@ -1,5 +1,7 @@
 ﻿using Bastis.Models;
 using Bastis.Models.Entities;
+using PagedList;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -12,9 +14,44 @@ namespace Bastis.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: States
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.States.ToList());
+            //return View(db.States.ToList());
+
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewBag.CurrentFilter = searchString;
+
+            var states = from s in db.States
+                      select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                states = states.Where(s => s.Name.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    states = states.OrderByDescending(s => s.Name);
+                    break;
+                case "Codigo":
+                    states = states.OrderBy(s => s.Code);
+                    break;
+                default:  // Name ascending 
+                    states = states.OrderBy(s => s.Code);
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(states.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: States/Details/5
