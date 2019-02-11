@@ -7,11 +7,11 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
+
+    @Html.ActionLink("Crear nuevo", "Create", "Cities", null, new { @class = "btn btn-primary btn-large" })
+
 </p>
-
-
-
 
 <section class="panel">
     <header class="panel-heading">
@@ -56,46 +56,47 @@
 
                 @foreach (var item in Model)
                 {
-                    <tr>
+                <tr>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.UnifiedCode)
-                        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnifiedCode)
+                    </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Status)
-                        </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
 
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil" }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                           @Html.ActionLink(" Login", "Index", new { Controller = "Login", Area = "Security" }, new { @class = "glyphicon glyphicon-log-in" })
-                        </td>
+                    <td>
+                        @Html.ActionLink(" ", "Edit", new { id = item.ID }, htmlAttributes: new { @class = "glyphicon glyphicon-pencil" }) |
+                        @Html.ActionLink(" ", "Details", new { id = item.ID }, htmlAttributes: new { @class = "glyphicon glyphicon-list-alt" }) |
+                        @Html.ActionLink(" ", "Delete", new { id = item.ID }, htmlAttributes: new { @class = "glyphicon glyphicon-trash" })
+                    </td>
 
-                        @*<td class="actions">
+                    @*<td class="actions">
 
-                                <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                            </td>*@
+            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+        </td>*@
 
 
-                        @*<td>
-                                @using (Html.BeginForm("Delete", "AdminRoles", FormMethod.Post, new { @id = "notificationForm" }))
-                                {
-                                    <div class="input-group-btn">
-                                        @Html.AntiForgeryToken()
-                                        @Html.ActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Editar", "Edit", "AdminRoles", routeValues: new { id = item.ID }, htmlAttributes: new { @class = "btn btn-default btn-sm" })
-                                        @Html.ActionLink("<span class='glyphicon glyphicon-list-alt'></span>", "Detalles", "Details", "AdminRoles", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-default btn-sm" })
-                                        <a class="btn btn-danger btn-sm" href="javascript:confirmDelete('Delete','@item.ID')"><span class='glyphicon glyphicon-trash'></span></a>
-                                    </div>
-                                }
-                            </td>*@
+                    @*<td>
+            @using (Html.BeginForm("Delete", "AdminRoles", FormMethod.Post, new { @id = "notificationForm" }))
+            {
+                <div class="input-group-btn">
+                    @Html.AntiForgeryToken()
+                    @Html.ActionLink("<span class='glyphicon glyphicon-pencil'></span>", "Editar", "Edit", "AdminRoles", routeValues: new { id = item.ID }, htmlAttributes: new { @class = "btn btn-default btn-sm" })
+                    @Html.ActionLink("<span class='glyphicon glyphicon-list-alt'></span>", "Detalles", "Details", "AdminRoles", new { id = item.ID }, htmlAttributes: new { @class = "btn btn-default btn-sm" })
+                    <a class="btn btn-danger btn-sm" href="javascript:confirmDelete('Delete','@item.ID')"><span class='glyphicon glyphicon-trash'></span></a>
+                </div>
+            }
+        </td>*@
 
-                    </tr>
+                   
+
+                </tr>
                 }
 
 
